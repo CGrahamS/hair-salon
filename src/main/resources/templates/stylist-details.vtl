@@ -1,0 +1,27 @@
+<h2>$stylist.getName()'s Clients:</h2>
+  <ul>
+    #foreach ($client in $clients)
+      <li>
+        <a href="#">$client.getName()</a>
+        <br>
+        Next Appointment: $client.getAppointment()
+      </li>
+    #end
+  </ul>
+  <form action="/$stylist.getName()/client/new" method="post">
+    <div class="form-group">
+      <label for="name">Enter new client's name:</label>
+      <input id="name" name="name" type="text" class="form-control" placeholder="Name">
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Enter client notes:</label>
+      <textarea id="notes" name="notes" type="text" class="form-control" placeholder="Client Notes..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="appointment_date">Enter client appointment date:</label>
+      <input id="appointment_date" name="appointment_date" type="date" class="form-control" placeholder="Appointment Date">
+    </div>
+    <button type="submit" class="btn btn-success">Add New Client</button>
+  </form>
