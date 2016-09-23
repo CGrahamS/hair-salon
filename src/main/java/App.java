@@ -36,7 +36,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Stylist stylist = Stylist.findName(request.params(":name"));
       model.put("title", stylist.getName() + "'s Clients");
-      model.put("clients", Client.all());
+      model.put("clients", stylist.getClients());
       model.put("header", header);
       model.put("stylist", stylist);
       model.put("template", "templates/stylist-details.vtl");
@@ -51,7 +51,20 @@ public class App {
       String appointment_date = request.queryParams("appointment_date");
       Client newClient = new Client(name, notes, appointment_date, stylist.getId());
       newClient.save();
-      response.redirect("/");
+      String url ="/" + request.params(":name") + "/clients";
+      response.redirect(url);
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/:name/:client_name/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.findName(request.params(":name"));
+      Client client = Client.findName(request.params(":client_name"));
+      model.put("title", client.getName()+ "'s Details");
+      model.put("header", header);
+      model.put("stylist", stylist);
+      model.put("client", client);
+      model.put("template", "templates/client-details.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }
