@@ -20,4 +20,19 @@ public class StylistTest {
     Stylist firstStylist = new Stylist("Mike");
     assertEquals("Mike", firstStylist.getName());
   }
+
+  @Test //Should I even test for this before saving?
+  public void getId_returnsStylistId_id() {
+    Stylist firstStylist = new Stylist("Mike");
+    int id = firstStylist.getId();
+    assertEquals(id, firstStylist.getId());
+  }
+
+  @Test
+  public void equals_returnsTrueIfNamesAreTheSame() {
+    Stylist firstStylist = new Stylist("Mike");
+    Stylist secondStylist = new Stylist("Mike");
+    assertTrue(firstStylist.equals(secondStylist));
+  }
+
 }
