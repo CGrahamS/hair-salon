@@ -10,12 +10,12 @@ public class Stylist {
     this.name = name;
   }
 
-  public String getName() {
-    return name;
-  }
-
   public int getId() {
     return id;
+  }
+
+  public String getName() {
+    return name;
   }
 
   @Override

@@ -15,6 +15,10 @@ public class Client {
     this.appointment_date = appointment_date;
   }
 
+  public int getId() {
+    return id;
+  }
+
   public String getName() {
     return name;
   }
@@ -25,5 +29,18 @@ public class Client {
 
   public String getAppointment() {
     return appointment_date;
+  }
+
+  @Override
+  public boolean equals(Object otherClient) {
+    if (!(otherClient instanceof Client)) {
+      return false;
+    } else {
+      Client newClient = (Client) otherClient;
+      return this.name.equals(newClient.getName()) &&
+             this.notes.equals(newClient.getNotes()) &&
+             this.appointment_date.equals(newClient.getAppointment()) &&
+             this.id == newClient.getId();
+    }
   }
 }

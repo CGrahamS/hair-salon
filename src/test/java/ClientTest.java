@@ -33,4 +33,11 @@ public class ClientTest {
     assertEquals("10/30/2016", firstClient.getAppointment());
   }
 
+  @Test
+  public void equals_firstClientIsSameAsSecondClient_true() {
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    Client secondClient = new Client("Cathy", "Trim", "10/30/2016");
+    assertTrue(firstClient.equals(secondClient));
+  }
+
 }
