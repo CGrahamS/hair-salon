@@ -43,4 +43,23 @@ public class Client {
              this.id == newClient.getId();
     }
   }
+
+  public static List<Client> all() {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients";
+      return con.createQuery(sql).executeAndFetch(Client.class);
+    }
+  }
+
+  public void save() {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO clients (name, notes, appointment_date) VALUES (:name, :notes, :appointment_date)";
+      this.id = (int) con.createQuery(sql, true)
+      .addParameter("name", name)
+      .addParameter("notes", notes)
+      .addParameter("appointment_date", appointment_date)
+      .executeUpdate()
+      .getKey();
+    }
+  }
 }

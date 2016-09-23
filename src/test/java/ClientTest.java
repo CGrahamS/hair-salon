@@ -40,4 +40,21 @@ public class ClientTest {
     assertTrue(firstClient.equals(secondClient));
   }
 
+  @Test
+  public void save_savesClientToDatabase_true() {
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    firstClient.save();
+    assertTrue(Client.all().get(0).equals(firstClient));
+  }
+
+  @Test
+  public void all_returnsAllInstancesOfClient_true() {
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    firstClient.save();
+    Client secondClient = new Client("Martha", "Color", "10/30/2016");
+    secondClient.save();
+    assertTrue(Client.all().get(0).equals(firstClient));
+    assertTrue(Client.all().get(1).equals(secondClient));
+  }
+
 }
