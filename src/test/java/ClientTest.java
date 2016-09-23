@@ -96,4 +96,14 @@ public class ClientTest {
     assertEquals("Catherine", firstClient.getName());
   }
 
+  @Test
+  public void delete_deletesClient_null() {
+    Stylist testStylist = new Stylist("Mike");
+    testStylist.save();
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
+    firstClient.save();
+    firstClient.delete();
+    assertEquals(null, Client.find(firstClient.getId()));
+  }
+
 }
