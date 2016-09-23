@@ -15,5 +15,7 @@ public class Client {
     this.appointment_date = appointment_date;
   }
 
-  
+  public String getName() {
+    return name;
+  }
 }

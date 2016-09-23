@@ -15,4 +15,10 @@ public class ClientTest {
     assertTrue(firstClient instanceof Client);
   }
 
+  @Test
+  public void getName_returnsClientName_Cathy() {
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    assertEquals("Cathy", firstClient.getName());
+  }
+
 }
