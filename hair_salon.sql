@@ -41,7 +41,7 @@ CREATE TABLE clients (
     id integer NOT NULL,
     name character varying,
     notes text,
-    appointment date,
+    appointment_date character varying,
     stylist_id integer
 );
 
@@ -120,7 +120,7 @@ ALTER TABLE ONLY stylists ALTER COLUMN id SET DEFAULT nextval('stylists_id_seq':
 -- Data for Name: clients; Type: TABLE DATA; Schema: public; Owner: CGrahamS
 --
 
-COPY clients (id, name, notes, appointment, stylist_id) FROM stdin;
+COPY clients (id, name, notes, appointment_date, stylist_id) FROM stdin;
 \.
 
 
