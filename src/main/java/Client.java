@@ -9,10 +9,11 @@ public class Client {
   private String appointment_date;
   private int stylist_id;
 
-  public Client(String name, String notes, String appointment_date) {
+  public Client(String name, String notes, String appointment_date, int stylist_id) {
     this.name = name;
     this.notes = notes;
     this.appointment_date = appointment_date;
+    this.stylist_id = stylist_id;
   }
 
   public int getId() {
@@ -31,6 +32,10 @@ public class Client {
     return appointment_date;
   }
 
+  public int getStylistId() {
+    return stylist_id;
+  }
+
   @Override
   public boolean equals(Object otherClient) {
     if (!(otherClient instanceof Client)) {
@@ -40,7 +45,8 @@ public class Client {
       return this.name.equals(newClient.getName()) &&
              this.notes.equals(newClient.getNotes()) &&
              this.appointment_date.equals(newClient.getAppointment()) &&
-             this.id == newClient.getId();
+             this.id == newClient.getId() &&
+             this.stylist_id == newClient.getStylistId();
     }
   }
 
@@ -53,11 +59,12 @@ public class Client {
 
   public void save() {
     try (Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO clients (name, notes, appointment_date) VALUES (:name, :notes, :appointment_date)";
+      String sql = "INSERT INTO clients (name, notes, appointment_date, stylist_id) VALUES (:name, :notes, :appointment_date, :stylist_id)";
       this.id = (int) con.createQuery(sql, true)
-                         .addParameter("name", name)
-                         .addParameter("notes", notes)
-                         .addParameter("appointment_date", appointment_date)
+                         .addParameter("name", this.name)
+                         .addParameter("notes", this.notes)
+                         .addParameter("appointment_date", this.appointment_date)
+                         .addParameter("stylist_id", this.stylist_id)
                          .executeUpdate()
                          .getKey();
     }
@@ -67,8 +74,8 @@ public class Client {
     try (Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM clients WHERE id = :id";
       Client client = con.createQuery(sql)
-                           .addParameter("id", id)
-                           .executeAndFetchFirst(Client.class);
+                         .addParameter("id", id)
+                         .executeAndFetchFirst(Client.class);
       return client;
     }
   }
@@ -77,9 +84,24 @@ public class Client {
     try (Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM clients WHERE name = :name";
       Client client = con.createQuery(sql)
-                           .addParameter("name", name)
-                           .executeAndFetchFirst(Client.class);
+                         .addParameter("name", name)
+                         .executeAndFetchFirst(Client.class);
       return client;
+    }
+  }
+
+  public void update(String name, String notes, String appointment_date) {
+    try (Connection con = DB.sql2o.open()) {
+      this.name = name;
+      this.notes = notes;
+      this.appointment_date = appointment_date;
+      String sql = "UPDATE clients SET name = :name, notes = :notes, appointment_date = :appointment_date WHERE id = :id";
+      con.createQuery(sql)
+         .addParameter("name", name)
+         .addParameter("notes", notes)
+         .addParameter("appointment_date", appointment_date)
+         .addParameter("id", id)
+         .executeUpdate();
     }
   }
 }

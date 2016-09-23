@@ -11,47 +11,54 @@ public class ClientTest {
 
   @Test
   public void Client_instantiatesCorrectly_true() {
-    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    Stylist testStylist = new Stylist("Mike");
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
     assertTrue(firstClient instanceof Client);
   }
 
   @Test
   public void getName_returnsClientName_Cathy() {
-    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    Stylist testStylist = new Stylist("Mike");
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
     assertEquals("Cathy", firstClient.getName());
   }
 
   @Test
   public void getNotes_returnsClientNotes_Trim() {
-    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    Stylist testStylist = new Stylist("Mike");
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
     assertEquals("Trim", firstClient.getNotes());
   }
 
   @Test
   public void getAppointment_10_30_2016() {
-    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    Stylist testStylist = new Stylist("Mike");
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
     assertEquals("10/30/2016", firstClient.getAppointment());
   }
 
   @Test
   public void equals_firstClientIsSameAsSecondClient_true() {
-    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
-    Client secondClient = new Client("Cathy", "Trim", "10/30/2016");
+    Stylist testStylist = new Stylist("Mike");
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
+    Client secondClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
     assertTrue(firstClient.equals(secondClient));
   }
 
   @Test
   public void save_savesClientToDatabase_true() {
-    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    Stylist testStylist = new Stylist("Mike");
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
     firstClient.save();
     assertTrue(Client.all().get(0).equals(firstClient));
   }
 
   @Test
   public void all_returnsAllInstancesOfClient_true() {
-    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    Stylist testStylist = new Stylist("Mike");
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
     firstClient.save();
-    Client secondClient = new Client("Martha", "Color", "10/30/2016");
+    Client secondClient = new Client("Martha", "Color", "10/30/2016", testStylist.getId());
     secondClient.save();
     assertTrue(Client.all().get(0).equals(firstClient));
     assertTrue(Client.all().get(1).equals(secondClient));
@@ -59,20 +66,34 @@ public class ClientTest {
 
   @Test
   public void find_returnsClientWithSameId_secondClient() {
-    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    Stylist testStylist = new Stylist("Mike");
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
     firstClient.save();
-    Client secondClient = new Client("Martha", "Color", "10/30/2016");
+    Client secondClient = new Client("Martha", "Color", "10/30/2016", testStylist.getId());
     secondClient.save();
     assertEquals(Client.find(secondClient.getId()), secondClient);
   }
 
   @Test
   public void find_returnsClientWithSameName_secondClient() {
-    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    Stylist testStylist = new Stylist("Mike");
+    testStylist.save();
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
+    System.out.println(testStylist.getId());
     firstClient.save();
-    Client secondClient = new Client("Martha", "Color", "10/30/2016");
+    Client secondClient = new Client("Martha", "Color", "10/30/2016", testStylist.getId());
     secondClient.save();
     assertEquals(Client.findName(secondClient.getName()), secondClient);
+  }
+
+  @Test
+  public void update_updatesClient_Catherine() {
+    Stylist testStylist = new Stylist("Mike");
+    testStylist.save();
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
+    firstClient.save();
+    firstClient.update("Catherine", "Trim and Color", "11/12/2016");
+    assertEquals("Catherine", firstClient.getName());
   }
 
 }
