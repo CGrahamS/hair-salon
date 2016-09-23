@@ -21,4 +21,10 @@ public class ClientTest {
     assertEquals("Cathy", firstClient.getName());
   }
 
+  @Test
+  public void getNotes_returnsClientNotes_Trim() {
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    assertEquals("Trim", firstClient.getNotes());
+  }
+
 }
