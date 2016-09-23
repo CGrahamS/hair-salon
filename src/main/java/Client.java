@@ -55,11 +55,31 @@ public class Client {
     try (Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO clients (name, notes, appointment_date) VALUES (:name, :notes, :appointment_date)";
       this.id = (int) con.createQuery(sql, true)
-      .addParameter("name", name)
-      .addParameter("notes", notes)
-      .addParameter("appointment_date", appointment_date)
-      .executeUpdate()
-      .getKey();
+                         .addParameter("name", name)
+                         .addParameter("notes", notes)
+                         .addParameter("appointment_date", appointment_date)
+                         .executeUpdate()
+                         .getKey();
+    }
+  }
+
+  public static Client find(int id) {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients WHERE id = :id";
+      Client client = con.createQuery(sql)
+                           .addParameter("id", id)
+                           .executeAndFetchFirst(Client.class);
+      return client;
+    }
+  }
+
+  public static Client findName(String name) {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients WHERE name = :name";
+      Client client = con.createQuery(sql)
+                           .addParameter("name", name)
+                           .executeAndFetchFirst(Client.class);
+      return client;
     }
   }
 }

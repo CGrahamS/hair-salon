@@ -21,7 +21,7 @@ public class StylistTest {
     assertEquals("Mike", firstStylist.getName());
   }
 
-  @Test //Should I even test for this before saving?
+  @Test //Should I even test for this before creating a save method?
   public void getId_returnsStylistId_id() {
     Stylist firstStylist = new Stylist("Mike");
     int id = firstStylist.getId();
@@ -69,5 +69,13 @@ public class StylistTest {
     secondStylist.save();
     assertEquals(Stylist.findName(secondStylist.getName()), secondStylist);
   }
+
+  // @Test
+  // public void update_updatesStylist_Michael() {
+  //   Stylist firstStylist = new Stylist("Mike");
+  //   firstStylist.save();
+  //   firstStylist.update("Michael");
+  //   assertEquals("Michael", firstStylist.getName());
+  // }
 
 }
