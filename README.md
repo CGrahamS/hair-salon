@@ -39,7 +39,7 @@ This webpage will allow employees of a salon to add new stylists, add clients to
     NOTE: You should see "stylists" and "clients" tables in the "hair_salon" database.
 * Back in your third terminal window:
   * Run the server: `$ gradle run`
-* In the browser of your choosing, navigate to "localhost:4567" (tested in Chrome).
+* In the browser of your choosing, navigate to "localhost:4567" (tested in Chrome). 
 
 ## Known Bugs
 

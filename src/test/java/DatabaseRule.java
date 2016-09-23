@@ -1,6 +1,5 @@
 import org.junit.rules.ExternalResource;
 import org.sql2o.*;
-import java.util.Date;
 
 public class DatabaseRule extends ExternalResource {
   @Override
