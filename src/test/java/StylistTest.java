@@ -46,6 +46,18 @@ public class StylistTest {
   }
 
   @Test
+  public void getClients_returnsAllClientsWithSameStylistId_true() {
+    Stylist firstStylist = new Stylist("Mike");
+    firstStylist.save();
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016", firstStylist.getId());
+    firstClient.save();
+    Client secondClient = new Client("Martha", "Color", "10/30/2016", firstStylist.getId());
+    secondClient.save();
+    assertTrue(firstStylist.getClients().get(0).equals(firstClient));
+    assertTrue(firstStylist.getClients().get(1).equals(secondClient));
+  }
+
+  @Test
   public void save_savesStylistInDatabase_true() {
     Stylist firstStylist = new Stylist("Mike");
     firstStylist.save();

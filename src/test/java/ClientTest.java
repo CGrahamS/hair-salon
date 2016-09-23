@@ -79,7 +79,6 @@ public class ClientTest {
     Stylist testStylist = new Stylist("Mike");
     testStylist.save();
     Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
-    System.out.println(testStylist.getId());
     firstClient.save();
     Client secondClient = new Client("Martha", "Color", "10/30/2016", testStylist.getId());
     secondClient.save();
