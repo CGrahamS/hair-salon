@@ -35,4 +35,21 @@ public class StylistTest {
     assertTrue(firstStylist.equals(secondStylist));
   }
 
+  @Test
+  public void all_returnsAllInstancesOfStylist_true() {
+    Stylist firstStylist = new Stylist("Mike");
+    firstStylist.save();
+    Stylist secondStylist = new Stylist("Brenda");
+    secondStylist.save();
+    assertTrue(Stylist.all().get(0).equals(firstStylist));
+    assertTrue(Stylist.all().get(1).equals(secondStylist));    
+  }
+
+  @Test
+  public void save_savesStylistInDatabase_true() {
+    Stylist firstStylist = new Stylist("Mike");
+    firstStylist.save();
+    assertTrue(Stylist.all().get(0).equals(firstStylist));
+  }
+
 }
