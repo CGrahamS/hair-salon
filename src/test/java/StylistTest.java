@@ -70,12 +70,12 @@ public class StylistTest {
     assertEquals(Stylist.findName(secondStylist.getName()), secondStylist);
   }
 
-  // @Test
-  // public void update_updatesStylist_Michael() {
-  //   Stylist firstStylist = new Stylist("Mike");
-  //   firstStylist.save();
-  //   firstStylist.update("Michael");
-  //   assertEquals("Michael", firstStylist.getName());
-  // }
+  @Test
+  public void update_updatesStylist_Michael() {
+    Stylist firstStylist = new Stylist("Mike");
+    firstStylist.save();
+    firstStylist.update("Michael");
+    assertEquals("Michael", firstStylist.getName());
+  }
 
 }

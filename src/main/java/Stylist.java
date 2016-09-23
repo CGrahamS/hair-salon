@@ -66,4 +66,15 @@ public class Stylist {
     }
   }
 
+  public void update(String name) {
+    try (Connection con = DB.sql2o.open()) {
+      this.name = name; //test functionality
+      String sql = "UPDATE clients SET name = :name WHERE id = :id";
+      con.createQuery(sql)
+         .addParameter("name", name)
+         .addParameter("id", id)
+         .executeUpdate();
+    }
+  }
+
 }
