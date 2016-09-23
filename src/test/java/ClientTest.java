@@ -27,4 +27,10 @@ public class ClientTest {
     assertEquals("Trim", firstClient.getNotes());
   }
 
+  @Test
+  public void getAppointment_10_30_2016() {
+    Client firstClient = new Client("Cathy", "Trim", "10/30/2016");
+    assertEquals("10/30/2016", firstClient.getAppointment());
+  }
+
 }

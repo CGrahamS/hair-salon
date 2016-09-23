@@ -22,4 +22,8 @@ public class Client {
   public String getNotes() {
     return notes;
   }
+
+  public String getAppointment() {
+    return appointment_date;
+  }
 }
