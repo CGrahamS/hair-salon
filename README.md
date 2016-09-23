@@ -36,10 +36,10 @@ This webpage will allow employees of a salon to add new stylists, add clients to
     * Connect to hair_salon database: `# \c hair_salon;`
     * Print out database tables: `# \dt;`
     <br>
-    NOTE: You should see "stylists" and "clients" tables in the "hair_salon" database.
+    NOTE: You should see `stylists` and `clients` tables in the `hair_salon` database.
 * Back in your third terminal window:
   * Run the server: `$ gradle run`
-* In the browser of your choosing, navigate to "localhost:4567" (tested in Chrome). 
+* In the browser of your choosing, navigate to "localhost:4567" (tested in Chrome).
 
 ## Known Bugs
 
@@ -54,7 +54,7 @@ Caleb Stevenson: _cgrahamstevenson@gmail.com_
 _Java,
 Spark,
 Velocity,
-Sql_
+SQL_
 
 ### License
 
