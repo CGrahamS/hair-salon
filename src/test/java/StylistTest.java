@@ -42,7 +42,7 @@ public class StylistTest {
     Stylist secondStylist = new Stylist("Brenda");
     secondStylist.save();
     assertTrue(Stylist.all().get(0).equals(firstStylist));
-    assertTrue(Stylist.all().get(1).equals(secondStylist));    
+    assertTrue(Stylist.all().get(1).equals(secondStylist));
   }
 
   @Test
@@ -50,6 +50,24 @@ public class StylistTest {
     Stylist firstStylist = new Stylist("Mike");
     firstStylist.save();
     assertTrue(Stylist.all().get(0).equals(firstStylist));
+  }
+
+  @Test
+  public void find_returnsStylistWithSameId_secondStylist() {
+    Stylist firstStylist = new Stylist("Mike");
+    firstStylist.save();
+    Stylist secondStylist = new Stylist("Brenda");
+    secondStylist.save();
+    assertEquals(Stylist.find(secondStylist.getId()), secondStylist);
+  }
+
+  @Test
+  public void findName_returnsStylistWithSameName_secondStylist() {
+    Stylist firstStylist = new Stylist("Mike");
+    firstStylist.save();
+    Stylist secondStylist = new Stylist("Brenda");
+    secondStylist.save();
+    assertEquals(Stylist.findName(secondStylist.getName()), secondStylist);
   }
 
 }
