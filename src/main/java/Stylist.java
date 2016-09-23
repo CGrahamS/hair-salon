@@ -68,10 +68,24 @@ public class Stylist {
 
   public void update(String name) {
     try (Connection con = DB.sql2o.open()) {
-      this.name = name; //test functionality
-      String sql = "UPDATE clients SET name = :name WHERE id = :id";
+      this.name = name;
+      String sql = "UPDATE stylists SET name = :name WHERE id = :id";
       con.createQuery(sql)
          .addParameter("name", name)
+         .addParameter("id", id)
+         .executeUpdate();
+    }
+  }
+
+  public void delete() {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM clients WHERE stylist_id = :stylist_id";
+      con.createQuery(sql)
+         .addParameter("stylist_id", id)
+         .executeUpdate();
+
+      sql = "DELETE FROM stylists WHERE id = :id";
+      con.createQuery(sql)
          .addParameter("id", id)
          .executeUpdate();
     }
