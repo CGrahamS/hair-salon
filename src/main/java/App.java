@@ -48,7 +48,8 @@ public class App {
       Stylist stylist = Stylist.find(request.params(":name"), Integer.parseInt(request.params(":id")));
       String name = request.queryParams("name");
       String notes = request.queryParams("notes");
-      String appointment_date = request.queryParams("appointment_date");
+      String unformatted_appointment_date = request.queryParams("appointment_date");
+      String appointment_date = DateFormatter.formatDate(unformatted_appointment_date);
       Client newClient = new Client(name, notes, appointment_date, stylist.getId());
       newClient.save();
       String url ="/" + stylist.getName() + "/" + stylist.getId() + "/clients";
@@ -74,11 +75,14 @@ public class App {
       Client client = Client.find(request.params(":client_name"), Integer.parseInt(request.params("client_id")));
       String name = request.queryParams("name");
       String notes = request.queryParams("notes");
-      String appointment_date = request.queryParams("appointment_date");
+      String unformatted_appointment_date = request.queryParams("appointment_date");
+      String appointment_date = DateFormatter.formatDate(unformatted_appointment_date);
       client.update(name, notes, appointment_date);
       String url ="/" + stylist.getName() + "/" + stylist.getId() + "/" + client.getName() + "/" + client.getId() + "/edit";
       response.redirect(url);
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    get()
   }
 }
