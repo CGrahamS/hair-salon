@@ -81,16 +81,6 @@ public class Client {
     }
   }
 
-  // public static Client findName(String name) {
-  //   try (Connection con = DB.sql2o.open()) {
-  //     String sql = "SELECT * FROM clients WHERE name = :name";
-  //     Client client = con.createQuery(sql)
-  //                        .addParameter("name", name)
-  //                        .executeAndFetchFirst(Client.class);
-  //     return client;
-  //   }
-  // }
-
   public void update(String name, String notes, String appointment_date) {
     try (Connection con = DB.sql2o.open()) {
       this.name = name;

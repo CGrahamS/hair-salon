@@ -73,15 +73,6 @@ public class StylistTest {
     assertEquals(Stylist.find(secondStylist.getName(), secondStylist.getId()), secondStylist);
   }
 
-  // @Test
-  // public void findName_returnsStylistWithSameName_secondStylist() {
-  //   Stylist firstStylist = new Stylist("Mike");
-  //   firstStylist.save();
-  //   Stylist secondStylist = new Stylist("Brenda");
-  //   secondStylist.save();
-  //   assertEquals(Stylist.findName(secondStylist.getName()), secondStylist);
-  // }
-
   @Test
   public void update_updatesStylist_Michael() {
     Stylist firstStylist = new Stylist("Mike");

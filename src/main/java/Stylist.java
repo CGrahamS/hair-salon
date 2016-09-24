@@ -66,16 +66,6 @@ public class Stylist {
     }
   }
 
-  public static Stylist findName(String name) {
-    try (Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM stylists WHERE name = :name";
-      Stylist stylist = con.createQuery(sql)
-                           .addParameter("name", name)
-                           .executeAndFetchFirst(Stylist.class);
-      return stylist; //check if you need this to display stylist name in app
-    }
-  }
-
   public void update(String name) {
     try (Connection con = DB.sql2o.open()) {
       this.name = name;
