@@ -1,17 +1,19 @@
-<h2>$stylist.getName()'s Clients:</h2>
+<h3>$stylist.getName()'s Clients:</h3>
   <ul>
     #foreach ($client in $clients)
       <li>
-        $client.getName()
+        <strong>$client.getName()</strong>
         <br>
-        Next Appointment: $client.getAppointment()
+        Next Appointment: <em>$client.getAppointment()</em>
         <br>
         Client Notes: $client.getNotes()
         <br>
-        <a href="/$stylist.getName()/$stylist.getId()/$client.getName()/$client.getId()/edit" class="btn btn-warning">Edit $client.getName()'s Details</a>
+        <a href="/$stylist.getName()/$stylist.getId()/$client.getName()/$client.getId()/edit" class="btn btn-info btn-sm">Edit $client.getName()'s Details</a>
       </li>
     #end
   </ul>
+  <hr>
+  <h3>Create A New Client!</h3>
   <form action="/$stylist.getName()/$stylist.getId()/client/new" method="post">
     <div class="form-group">
       <label for="name">Enter new client's name:</label>
@@ -24,8 +26,10 @@
     </div>
 
     <div class="form-group">
-      <label for="appointment_date">Enter client appointment date:</label>
+      <label for="appointment_date">Enter client's appointment date:</label>
       <input id="appointment_date" name="appointment_date" type="date" class="form-control" placeholder="Appointment Date">
     </div>
-    <button type="submit" class="btn btn-success">Add New Client</button>
+    <button type="submit" class="btn btn-success">Add New Client!</button>
   </form>
+  <a href="/$stylist.getName()/$stylist.getId()/delete-confirm" class="btn btn-danger">DELETE $stylist.getName()'s Stylist Account</a>
+  <a href="/" class="btn btn-primary">Home</a>

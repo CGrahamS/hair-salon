@@ -83,6 +83,44 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get()
+    get("/:name/:id/delete-confirm", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(request.params(":name"), Integer.parseInt(request.params(":id")));
+      model.put("title", "DELETE " + stylist.getName());
+      model.put("header", header);
+      model.put("stylist", stylist);
+      model.put("template", "templates/stylist-delete.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/:name/:id/delete", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(request.params(":name"), Integer.parseInt(request.params(":id")));
+      stylist.delete();
+      response.redirect("/");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/:name/:id/:client_name/:client_id/delete-confirm", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(request.params(":name"), Integer.parseInt(request.params(":id")));
+      Client client = Client.find(request.params(":client_name"), Integer.parseInt(request.params(":client_id")));
+      model.put("title", "DELETE " + client.getName());
+      model.put("header", header);
+      model.put("stylist", stylist);
+      model.put("client", client);
+      model.put("template", "templates/client-delete.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/:name/:id/:client_name/:client_id/delete", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(request.params(":name"), Integer.parseInt(request.params(":id")));
+      Client client = Client.find(request.params(":client_name"), Integer.parseInt(request.params("client_id")));
+      client.delete();
+      String url ="/" + stylist.getName() + "/" + stylist.getId() + "/clients";
+      response.redirect(url);
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }

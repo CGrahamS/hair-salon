@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.sql2o.*;
@@ -92,6 +94,16 @@ public class ClientTest {
     firstClient.save();
     firstClient.delete();
     assertEquals(null, Client.find(firstClient.getName(), firstClient.getId()));
+  }
+
+  @Test
+  public void unformatDate_formatsDateTo_yyyy_MM_dd_1990_11_12() {
+    Stylist testStylist = new Stylist("Mike");
+    testStylist.save();
+    Client firstClient = new Client("Cathy", "Trim", "11/12/1990", testStylist.getId());
+    firstClient.save();
+    String formattedDate = firstClient.unformatDate(firstClient.getAppointment());
+    assertEquals("1990-11-12", formattedDate);
   }
 
 }

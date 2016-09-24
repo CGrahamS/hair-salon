@@ -1,5 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import org.sql2o.*;
 
 public class Client {
@@ -102,6 +104,23 @@ public class Client {
       con.createQuery(sql)
          .addParameter("id", id)
          .executeUpdate();
+    }
+  }
+
+  public static String unformatDate(String oldDateFormat) {
+    final String OLD_FORMAT = "MM/dd/yyyy";
+    final String NEW_FORMAT = "yyyy-MM-dd";
+    String formattedDate;
+    SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+    //parse would not work without a try and catch
+    try {
+      Date date = sdf.parse(oldDateFormat);
+      sdf.applyPattern(NEW_FORMAT);
+      formattedDate = sdf.format(date);
+      return formattedDate;
+    }
+    catch (Exception e) { //uncertain of what the "e" means
+      return null;
     }
   }
 }
