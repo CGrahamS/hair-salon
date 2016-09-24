@@ -51,7 +51,7 @@ public class App {
       String appointment_date = request.queryParams("appointment_date");
       Client newClient = new Client(name, notes, appointment_date, stylist.getId());
       newClient.save();
-      String url ="/" + stylis.getName() + "/clients";
+      String url ="/" + stylist.getName() + "/clients";
       response.redirect(url);
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
