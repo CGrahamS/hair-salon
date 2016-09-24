@@ -70,17 +70,17 @@ public class StylistTest {
     firstStylist.save();
     Stylist secondStylist = new Stylist("Brenda");
     secondStylist.save();
-    assertEquals(Stylist.find(secondStylist.getId()), secondStylist);
+    assertEquals(Stylist.find(secondStylist.getName(), secondStylist.getId()), secondStylist);
   }
 
-  @Test
-  public void findName_returnsStylistWithSameName_secondStylist() {
-    Stylist firstStylist = new Stylist("Mike");
-    firstStylist.save();
-    Stylist secondStylist = new Stylist("Brenda");
-    secondStylist.save();
-    assertEquals(Stylist.findName(secondStylist.getName()), secondStylist);
-  }
+  // @Test
+  // public void findName_returnsStylistWithSameName_secondStylist() {
+  //   Stylist firstStylist = new Stylist("Mike");
+  //   firstStylist.save();
+  //   Stylist secondStylist = new Stylist("Brenda");
+  //   secondStylist.save();
+  //   assertEquals(Stylist.findName(secondStylist.getName()), secondStylist);
+  // }
 
   @Test
   public void update_updatesStylist_Michael() {
@@ -97,8 +97,8 @@ public class StylistTest {
     Client firstClient = new Client("Cathy", "Trim", "10/30/2016", firstStylist.getId());
     firstClient.save();
     firstStylist.delete();
-    assertEquals(null, firstClient.find(firstClient.getId()));
-    assertEquals(null, firstStylist.find(firstStylist.getId()));
+    assertEquals(null, firstClient.find(firstClient.getName(), firstClient.getId()));
+    assertEquals(null, firstStylist.find(firstStylist.getName(), firstStylist.getId()));
   }
 
 }

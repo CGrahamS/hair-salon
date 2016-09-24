@@ -55,10 +55,11 @@ public class Stylist {
     }
   }
 
-  public static Stylist find(int id) {
+  public static Stylist find(String name, int id) {
     try (Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM stylists WHERE id = :id";
+      String sql = "SELECT * FROM stylists WHERE name = :name AND id = :id";
       Stylist stylist = con.createQuery(sql)
+                           .addParameter("name", name)
                            .addParameter("id", id)
                            .executeAndFetchFirst(Stylist.class);
       return stylist; //how do I get a test like this to fail appropriately?

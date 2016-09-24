@@ -2,15 +2,17 @@
   <ul>
     #foreach ($client in $clients)
       <li>
-        <a href="/$stylist.getName()/$client.getName()/edit">$client.getName()</a>
+        $client.getName()
         <br>
         Next Appointment: $client.getAppointment()
         <br>
         Client Notes: $client.getNotes()
+        <br>
+        <a href="/$stylist.getName()/$stylist.getId()/$client.getName()/$client.getId()/edit" class="btn btn-warning">Edit $client.getName()'s Details</a>
       </li>
     #end
   </ul>
-  <form action="/$stylist.getName()/client/new" method="post">
+  <form action="/$stylist.getName()/$stylist.getId()/client/new" method="post">
     <div class="form-group">
       <label for="name">Enter new client's name:</label>
       <input id="name" name="name" type="text" class="form-control" placeholder="Name">

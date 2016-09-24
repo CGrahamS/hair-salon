@@ -1,7 +1,7 @@
 <h3>Stylists:</h3>
 <ul>
   #foreach($stylist in $stylists)
-    <li><a href="/$stylist.getName()/clients" class="btn btn-info">$stylist.getName()</a></li>
+    <li><a href="/$stylist.getName()/$stylist.getId()/clients" class="btn btn-info">$stylist.getName()</a></li>
   #end
 </ul>
   <h5>Add a New Stylist:</h5>

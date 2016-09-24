@@ -65,25 +65,25 @@ public class ClientTest {
   }
 
   @Test
-  public void find_returnsClientWithSameId_secondClient() {
+  public void find_returnsClientWithSameIdAndName_secondClient() {
     Stylist testStylist = new Stylist("Mike");
     Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
     firstClient.save();
     Client secondClient = new Client("Martha", "Color", "10/30/2016", testStylist.getId());
     secondClient.save();
-    assertEquals(Client.find(secondClient.getId()), secondClient);
+    assertEquals(Client.find(secondClient.getName(), secondClient.getId()), secondClient);
   }
 
-  @Test
-  public void find_returnsClientWithSameName_secondClient() {
-    Stylist testStylist = new Stylist("Mike");
-    testStylist.save();
-    Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
-    firstClient.save();
-    Client secondClient = new Client("Martha", "Color", "10/30/2016", testStylist.getId());
-    secondClient.save();
-    assertEquals(Client.findName(secondClient.getName()), secondClient);
-  }
+  // @Test
+  // public void findName_returnsClientWithSameName_secondClient() {
+  //   Stylist testStylist = new Stylist("Mike");
+  //   testStylist.save();
+  //   Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
+  //   firstClient.save();
+  //   Client secondClient = new Client("Martha", "Color", "10/30/2016", testStylist.getId());
+  //   secondClient.save();
+  //   assertEquals(Client.findName(secondClient.getName()), secondClient);
+  // }
 
   @Test
   public void update_updatesClient_Catherine() {
@@ -102,7 +102,7 @@ public class ClientTest {
     Client firstClient = new Client("Cathy", "Trim", "10/30/2016", testStylist.getId());
     firstClient.save();
     firstClient.delete();
-    assertEquals(null, Client.find(firstClient.getId()));
+    assertEquals(null, Client.find(firstClient.getName(), firstClient.getId()));
   }
 
 }
