@@ -43,7 +43,8 @@ This webpage will allow employees of a salon to add new stylists, add clients to
 
 ## Known Bugs
 
-_None_
+_Program submits empty form fields to database_
+_Links to accounts without names display 404 errors since the routing depends on account name as well as account id_
 
 ## Support and contact details
 
