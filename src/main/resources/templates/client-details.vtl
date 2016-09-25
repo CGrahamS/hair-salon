@@ -1,3 +1,4 @@
+<a href="/$stylist.getName()/$stylist.getId()/clients" class="btn btn-info">$stylist.getName()'s Clients</a>
 <h3>$client.getName()'s Details:</h3>
 <h4>Next Appointment: $client.getAppointment()</h4>
 <p>
@@ -22,6 +23,5 @@ $client.getNotes()
     <input id="appointment_date" name="appointment_date" type="date" class="form-control" value="$client.unformatDate($client.getAppointment())">
   </div>
   <button type="submit" class="btn btn-success">Update $client.getName()'s Details</button>
-  <a href="/$stylist.getName()/$stylist.getId()/$client.getName()/$client.getId()/delete-confirm" class="btn btn-danger">DELETE</a>
 </form>
-<a href="/$stylist.getName()/$stylist.getId()/clients" class="btn btn-info">$stylist.getName()'s Clients</a>
+<a href="/$stylist.getName()/$stylist.getId()/$client.getName()/$client.getId()/delete-confirm" class="btn btn-danger delete">DELETE $client.getName()'s Client Account</a>

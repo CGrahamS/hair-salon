@@ -3,9 +3,19 @@
 }
 
 #home {
-  margin-left: 32em;
+  margin-left: 46%;
+  margin-bottom: 2%;
 }
 
 li {
+  margin-bottom: 2%;
   list-style: none;
+}
+
+.stylist-client-name {
+  font-size: 1.25em;
+}
+
+.delete {
+  margin-top: 2%;
 }

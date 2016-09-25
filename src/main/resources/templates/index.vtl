@@ -2,16 +2,17 @@
 <ul>
   #foreach($stylist in $stylists)
     <li>
-      $stylist.getName()  
+      <strong class="stylist-client-name">$stylist.getName()</strong>
       <br>
       <a href="/$stylist.getName()/$stylist.getId()/clients" class="btn btn-info btn-sm">$stylist.getName()'s Clients</a>
     </li>
   #end
 </ul>
-  <h5>Add a New Stylist:</h5>
+<hr>
+  <h4>Add a New Stylist:</h4>
   <form action="/stylist/new" method="post">
     <div class="form-group">
-      <label for="name">Enter a new stylist's name</label>
+      <label for="name">Enter a new stylist's name:</label>
       <input id="name" name="name" type="text" class="form-control" placeholder="Name">
     </div>
     <button type="submit" class="btn btn-success">Add New Stylist</button>
