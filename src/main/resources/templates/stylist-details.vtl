@@ -5,9 +5,11 @@
         <li>
           <strong class="stylist-client-name">$client.getName()</strong>
           <br>
-          Next Appointment: <em>$client.getAppointment()</em>
+          <strong>Next Appointment:</strong> <em>$client.getAppointment()</em>
           <br>
-          Client Notes: $client.getNotes()
+          <strong>Client Notes:</strong>
+          <br>
+          $client.getNotes()
           <br>
           <a href="/$stylist.getName()/$stylist.getId()/$client.getName()/$client.getId()/edit" class="btn btn-info btn-sm">Edit $client.getName()'s Details</a>
         </li>
@@ -17,21 +19,33 @@
   <hr>
   <h4>Create A New Client!</h4>
   <form action="/$stylist.getName()/$stylist.getId()/client/new" method="post">
-    <div class="form-group">
-      <label for="name">Enter new client's name:</label>
-      <input id="name" name="name" type="text" class="form-control" placeholder="Name">
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="name">Enter name:</label>
+        <input id="name" name="name" type="text" class="form-control" placeholder="Name">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="appointment_date">Enter appointment date:</label>
+        <input id="appointment_date" name="appointment_date" type="date" class="form-control" placeholder="Appointment Date">
+      </div>
     </div>
-
-    <div class="form-group">
-      <label for="notes">Enter client notes:</label>
-      <textarea id="notes" name="notes" type="text" class="form-control" placeholder="Client Notes..."></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="appointment_date">Enter client's appointment date:</label>
-      <input id="appointment_date" name="appointment_date" type="date" class="form-control" placeholder="Appointment Date">
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label for="notes">Enter client notes:</label>
+        <textarea id="notes" name="notes" type="text" class="form-control" placeholder="Client Notes..."></textarea>
+      </div>
     </div>
     <button type="submit" class="btn btn-success">Add New Client!</button>
   </form>
-
+  <hr>
+  <h4>Update $stylist.getName()'s Details!</h4>
+  <form action="/$stylist.getName()/$stylist.getId()/update" method="post">
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="name">Update $stylist.getName()'s name:</label>
+        <input id="name" name="name" type="text" class="form-control" value="$stylist.getName()">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success">Update $stylist.getName()'s details!</button>
+  </form>
   <a href="/$stylist.getName()/$stylist.getId()/delete-confirm" class="btn btn-danger delete">DELETE $stylist.getName()'s Stylist Account</a>

@@ -121,8 +121,7 @@ ALTER TABLE ONLY stylists ALTER COLUMN id SET DEFAULT nextval('stylists_id_seq':
 --
 
 COPY clients (id, name, notes, appointment_date, stylist_id) FROM stdin;
-17	Cathy	Trim	11/12/2016	8
-18	Martha	Color. Loves the Seahawks.	11/12/2016	8
+19	Cathy	Usually gets a trim. Does not like small talk.	10/03/2016	10
 \.
 
 
@@ -130,7 +129,7 @@ COPY clients (id, name, notes, appointment_date, stylist_id) FROM stdin;
 -- Name: clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: CGrahamS
 --
 
-SELECT pg_catalog.setval('clients_id_seq', 18, true);
+SELECT pg_catalog.setval('clients_id_seq', 20, true);
 
 
 --
@@ -138,8 +137,7 @@ SELECT pg_catalog.setval('clients_id_seq', 18, true);
 --
 
 COPY stylists (id, name) FROM stdin;
-8	Mike
-9	Brenda
+10	Mike
 \.
 
 
@@ -147,7 +145,7 @@ COPY stylists (id, name) FROM stdin;
 -- Name: stylists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: CGrahamS
 --
 
-SELECT pg_catalog.setval('stylists_id_seq', 9, true);
+SELECT pg_catalog.setval('stylists_id_seq', 10, true);
 
 
 --

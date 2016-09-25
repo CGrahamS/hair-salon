@@ -8,19 +8,21 @@ $client.getNotes()
 </p>
 <h3>Update $client.getName()'s Details:</h3>
 <form action="/$stylist.getName()/$stylist.getId()/$client.getName()/$client.getId()/update" method="post">
-  <div class="form-group">
-    <label for="name">Update client's name:</label>
-    <input id="name" name="name" type="text" class="form-control" value="$client.getName()">
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="name">Update client's name:</label>
+      <input id="name" name="name" type="text" class="form-control" value="$client.getName()">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="appointment_date">Update client appointment date:</label>
+      <input id="appointment_date" name="appointment_date" type="date" class="form-control" value="$client.unformatDate($client.getAppointment())">
+    </div>
   </div>
-
-  <div class="form-group">
-    <label for="notes">Update client notes:</label>
-    <textarea id="notes" name="notes" type="text" class="form-control">$client.getNotes()</textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="appointment_date">Update client appointment date:</label>
-    <input id="appointment_date" name="appointment_date" type="date" class="form-control" value="$client.unformatDate($client.getAppointment())">
+  <div class="row">
+    <div class="form-group col-md-12">
+      <label for="notes">Update client notes:</label>
+      <textarea id="notes" name="notes" type="text" class="form-control">$client.getNotes()</textarea>
+    </div>
   </div>
   <button type="submit" class="btn btn-success">Update $client.getName()'s Details</button>
 </form>
