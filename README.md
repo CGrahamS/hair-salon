@@ -2,7 +2,7 @@
 
 ### _Epicodus: Java Week 3, Database Basics: Independent Project_
 
-#### By _**Caleb Stevenson**_
+#### By _[**Caleb Stevenson**](https://github.com/CGrahamS)_
 
 ## Description
 
@@ -43,8 +43,8 @@ This webpage will allow employees of a salon to add new stylists, add clients to
 
 ## Known Bugs
 
-_Program submits empty form fields to database_
-_Links to accounts without names display 404 errors since the routing depends on account name as well as account id_
+1. Program submits empty form fields to database.
+2. Links to accounts without names display 404 errors because the routing depends on account name as well as account id.
 
 ## Support and contact details
 
